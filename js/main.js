@@ -1,5 +1,6 @@
 /*----- constants -----*/
-
+const cups = document.getElementsByClassName(".cup")
+const stones = document.getElementsByClassName(".stone")
 
 /*----- app's state (variables) ----*/
 
@@ -11,3 +12,5 @@
 
 
 /*----- functions -----*/
+
+console.log(stones)

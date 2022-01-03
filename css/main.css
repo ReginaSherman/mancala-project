@@ -9,21 +9,109 @@ h1 {
 }
 
 
+
 .cup {
     height: 200px;
     width: 200px;
-    background-color: white;
+    background-color:cornflowerblue;
     border-style: solid;
-    border-radius: 50%;
+    border-radius: 35%;
     display:inline-flex;
+    position: relative;
+    margin: 7px;
 
 }
 
 .stone {
-    height: 25px;
-    width: 25px;
-    background-color: tomato;
+    height: 35px;
+    width: 35px;
+    background-color:darkgoldenrod;
     border-radius: 50%;
+    border-style: solid;
+    border-width: .5px;
     display:inline-flex;
+    flex-direction: row;
+    position:absolute;
+    top: 150px;
+    left: 80px;
 }
-       
+/* 
+#one {
+    top: 2em;
+    left: 2em;
+}
+
+#two {
+    top: 2em;
+    left: 5em;
+}
+
+#three {
+    top: 5em;
+    left: 5em;
+}
+
+#four {
+    top: 5em;
+    left: 2em;
+}
+
+#five {
+    top: 2em;
+    left: 2em;
+}
+
+#six {
+    top: 2em;
+    left: 5em;
+}
+
+#seven {
+    top: 5em;
+    left: 5em;
+}
+
+#eight {
+    top: 5em;
+    left: 2em;
+}
+
+#nine {
+    top: 2em;
+    left: 2em;
+}
+
+#ten {
+    top: 2em;
+    left: 5em;
+}
+
+#eleven {
+    top: 5em;
+    left: 5em;
+}
+
+#twelve {
+    top: 5em;
+    left: 2em;
+}
+
+#thirteen {
+    top: 2em;
+    left: 2em;
+}
+
+#fourteen {
+    top: 2em;
+    left: 5em;
+}
+
+#fifteen {
+    top: 5em;
+    left: 5em;
+}
+
+#sixteen {
+    top: 5em;
+    left: 2em;
+} */
