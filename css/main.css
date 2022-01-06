@@ -19,12 +19,15 @@ h1 {
     position: relative;
     margin: 7px; 
     left: 250px;
+    font-size: 50px;
+    color:black;
 }
 
 .topRow {
     margin-top: 20px;
     
 }
+
 
 .bottomRow {
     margin-top: 10px;
@@ -40,16 +43,18 @@ h1 {
     border-radius: 35%;
     display:inline-flex;
     position: relative;
-    
-
 }
 
 #cpu {
     position: absolute;
     left: 100px;
+    font-size: 50px;
+    color: black;
 }
 
 #p1 {
     position: absolute;
     right: 110px;
+    font-size: 50px;
+    color:black;
 }
