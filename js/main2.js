@@ -11,7 +11,7 @@ playerStore.innerHTML = cups[0]
 const computerStore = document.body.querySelectorAll('#cpu')
 computerStore.innerHTML = cups[14]
 
-let cupOne = document.getElementById('one')
+const cupOne = document.getElementById('one')
 const cupTwo = document.getElementById('two')
 const cupThree = document.getElementById('three')
 const cupFour = document.getElementById('four')
@@ -23,6 +23,16 @@ const cupNine = document.getElementById('nine')
 const cupTen = document.getElementById('ten')
 const cupEleven = document.getElementById('eleven')
 const cupTwelve = document.getElementById('twelve')
+
+let allCups = [cupOne, cupTwo, cupThree, cupFour, cupFive, cupSix, playerStore, cupSeven, cupEight,
+cupNine, cupTen, cupEleven, cupTwelve, computerStore]
+
+// console.log(allCups)
+
+if (parseInt(playerStore.innerHTML) > parseInt(computerStore.innerHTML)) {
+    console.log("you won!")
+}
+    
 
 
 // let gameStart = document.body.querySelectorAll(".cup").innerHTML = cups;
@@ -46,12 +56,11 @@ function runLoop(index) {
     }
 }
 
-function updateCount(div) {
-    for(let i = div; i <= cups.length; i++) {
-    div.innerHTML = cups;
-    }
-}
-
+// function updateCount(div) {
+//     for(let i = div; i <= allCups.length; i++) {
+//     div.innerHTML = [i];
+//     }
+// }
 
 //  console.log(cups) //--> This completes a players round and reflects the current state of the board
 
@@ -72,18 +81,38 @@ function updateCount(div) {
  //-----EVENT LISTENERS HERE AT THE BOTTOM-----
 //Grab the div
 
+// document.querySelectorAll('.cup').forEach(square => {
+//     square.addEventListener('click', () => {
+//         cupOne.innerHTML = cups[1]++
+//     })
+// })
+
+// for(let i = div; i <= allCups.length; i++)
+// div.innerHTML = cups[i]
+let sum = 0
 document.querySelectorAll('.cup').forEach(square => {
-    square.addEventListener('click', () => {
-        cupOne.innerHTML = cups[5]
+    square.addEventListener('click', () => { 
+       sum += parseInt(square.dataset.stones)
+        console.log(sum)
+        for(let i = parseInt(square.dataset.id); i < cups.length; i++) {
+            if(sum >= 0) {
+                square.innerHTML = 0
+                allCups[i].innerHTML = parseInt(allCups[i].innerHTML) + 1
+                sum -= 1
+            }
+        }
+
     })
 })
+
+
 
 const locationOfFirstDiv = document.body.querySelector('#one')
 cupOne.innerHTML = cups[1]
 // console.log(locationOfFirstDiv)
 locationOfFirstDiv.addEventListener('click', () => {
     runLoop(1) // <--- this would work! :) 
-    cupOne.innerHTML = cups[1]
+    // cupOne.innerHTML = cups[1]
     console.log(cups)
     //Here is where would run relevant functions
     //or simply have our tasks within here.. depends on how large your logic becomes.
@@ -93,6 +122,7 @@ const locationOfSecondDiv = document.body.querySelector('#two')
 cupTwo.innerHTML = cups[2]
 locationOfSecondDiv.addEventListener('click', () => {
     runLoop(2)
+    // cupTwo.innerHTML = cups[2]
     console.log(cups)
 })
     
