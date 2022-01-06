@@ -18,6 +18,7 @@ h1 {
     display:inline-flex;
     position: relative;
     margin: 7px; 
+    left: 250px;
 }
 
 .topRow {
@@ -26,8 +27,29 @@ h1 {
 }
 
 .bottomRow {
-    margin-top: 40px;
+    margin-top: 10px;
     align-content: center;
 
 }
 
+.store {
+    height: 250px;
+    width: 100px;
+    background-color: cornflowerblue;
+    border-style: solid;
+    border-radius: 35%;
+    display:inline-flex;
+    position: relative;
+    
+
+}
+
+#cpu {
+    position: absolute;
+    left: 100px;
+}
+
+#p1 {
+    position: absolute;
+    right: 110px;
+}

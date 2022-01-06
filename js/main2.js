@@ -1,6 +1,12 @@
-let cups = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+let cups = [0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0]
 //If I'm a player and I work with the first index/cup then that should be 0, and distribute to the indexes ahead of it
-
+// const top = document.body.querySelectorAll(".topRow")
+const topRow = Array.from(document.querySelectorAll('.topRow'))
+console.log(topRow)
+const bottomRow = document.body.querySelectorAll('.bottomRow')
+console.log(bottomRow)
+const playerStore = document.body.querySelector('#p1')
+const computerStore = document.body.querySelectorAll('#cpu')
 //WHAT NEEDS TO BE TRACKED DURING EACH PLAY:
 //If player picks up stones and needs to pass the computer's total cup, we would check if the current iteration is currently on the last index of the array
 //example: if the index cups[8 + 4] is the same index as the last item in the array, start back at cup[0] --> use .indexOf() to compare the index
@@ -16,20 +22,32 @@ function runLoop(index) {
     let currentAmountOfStones = cups[index]
     cups[index] = 0
     for(let i = index + 1; i <= index + currentAmountOfStones; i++) {
-    // cups[i] = cups[i] + 1
-    cups[i%12]++
+    cups[i%14]++
+    }
+    let cupOneStore = document.body.querySelector(".cup").innerHTML = cups;
 }
-}
-
-
 //  console.log(cups) //--> This completes a players round and reflects the current state of the board
+
+// If ((cups[index] === cups[1]) || (cups[index] === cups[2]) || (cups[index] === cups[3]) || (cups[index] === cups[4]) || (cups[index] === cups[5])) 
+// console.log("this works")
+
+// If ((topRow.includes(the div that I click) {
+    //allow click and run eventListner
+// } else {
+    //do not allow click and show alert "choose from the other row"
+// })
+
+// if (topRow.includes('#one') === true) {
+// }
+console.log(topRow.includes('#one'))
+
 
 //-----EVENT LISTENERS HERE AT THE BOTTOM-----
 //Grab the div
 const locationOfFirstDiv = document.body.querySelector('#one')
 // console.log(locationOfFirstDiv)
 locationOfFirstDiv.addEventListener('click', () => {
-    runLoop(0) // <--- this would work! :) 
+    runLoop(1) // <--- this would work! :) 
   console.log(cups)
   //Here is where would run relevant functions
   //or simply have our tasks within here.. depends on how large your logic becomes.
@@ -37,67 +55,70 @@ locationOfFirstDiv.addEventListener('click', () => {
 
 const locationOfSecondDiv = document.body.querySelector('#two')
 locationOfSecondDiv.addEventListener('click', () => {
-    runLoop(1)
+    runLoop(2)
     console.log(cups)
 })
     
 const locationOfThirdDiv = document.body.querySelector('#three')
 locationOfThirdDiv.addEventListener('click', () => {
-    runLoop(2)
-    console.log(cups)
-    
-})
-const locationOfFourthDiv = document.body.querySelector('#four')
-locationOfFourthDiv.addEventListener('click', () => {
     runLoop(3)
     console.log(cups)
 })
+
+const locationOfFourthDiv = document.body.querySelector('#four')
+locationOfFourthDiv.addEventListener('click', () => {
+    runLoop(4)
+    console.log(cups)
+})
+
 const locationOfFifthDiv = document.body.querySelector('#five')
 locationOfFifthDiv.addEventListener('click', () => {
-    runLoop(4)
+    runLoop(5)
     console.log(cups)
 })
     
 const locationOfSixDiv = document.body.querySelector('#six')
 locationOfSixDiv.addEventListener('click', () => {
-    runLoop(5)
-    console.log(cups)
-    
+    runLoop(6)
+    console.log(cups)  
 })
+
 const locationOfSeventhDiv = document.body.querySelector('#seven')
 locationOfSeventhDiv.addEventListener('click', () => {
-    runLoop(6)
+    runLoop(7)
     console.log(cups)
 })
+
 const locationOfEighthDiv = document.body.querySelector('#eight')
 locationOfEighthDiv.addEventListener('click', () => {
-    runLoop(7)
+    runLoop(8)
     console.log(cups)
 })
     
 const locationOfNinthDiv = document.body.querySelector('#nine')
 locationOfNinthDiv.addEventListener('click', () => {
-    runLoop(8)
-    console.log(cups)
-    
+    runLoop(9)
+    console.log(cups)   
 })
+
 const locationOfTenthDiv = document.body.querySelector('#ten')
 locationOfTenthDiv.addEventListener('click', () => {
-    runLoop(9)
+    runLoop(10)
     console.log(cups)
 })
 
 const locationOfEleventhDiv = document.body.querySelector('#eleven')
 locationOfEleventhDiv.addEventListener('click', () => {
-    runLoop(10)
-    console.log(cups)
-    
+    runLoop(11)
+    console.log(cups)    
 })
+
 const locationOfTwelfthDiv = document.body.querySelector('#twelve')
 locationOfTwelfthDiv.addEventListener('click', () => {
-    runLoop(11)
+    runLoop(12)
     console.log(cups)
 })
+
 //^ We would follow this same syntax to setup the event listener for all the other divs
 
 //BUG: THIS WOULD CAUSE YOUR FUNCTION TO RUN WITHOUT WAITING FOR A USER TO CLICK
@@ -138,4 +159,16 @@ locationOfTwelfthDiv.addEventListener('click', () => {
   //Check with console log
 
 //Can be stretch goal: Our next goal would be to use dom manipulation to display these values in the browser
+
+//Still need to compare values in cups[0] and cups [13] to see who wins
+    //Do I want to have the game end after a certain number of turns, or when one side is empty? 
+    //How do I determine when a whole side is empty? 
+
+//Distinguish sides so players can only choose from their side 
+
+//Automate computer player
+
+//Turn indicators
+
+//Keep track of how many are in each store? -- this will happen once I am able to display the array indices on each div 
 
