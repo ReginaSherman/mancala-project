@@ -10,13 +10,6 @@ const squareTwo = document.querySelector('#cup2')
 const squareThree = document.querySelector('#cup3')
 const squareFour = document.querySelector('#cup4')
 const squareFive = document.querySelector('#cup5')
-const squareSix = document.querySelector('#cup6')
-// const squareSeven = document.querySelector('#cup7')
-// const squareEight = document.querySelector('#cup8')
-// const squareNine = document.querySelector('#cup9')
-// const sqaureTen = document.querySelector('#cup10')
-// const squareEleven = document.querySelector('#cup11')
-// const squareTwelve = document.querySelector('#cup12')
 
 // Assigning specific stones to cups
 const cupOne = document.querySelectorAll('.one')
@@ -31,13 +24,6 @@ const cupTwoStones = Array.from(cupTwo)
 const cupThreeStones = Array.from(cupThree)
 const cupFourStones = Array.from(cupFour)
 const cupFiveStones = []
-const cupSixStones = []
-// const cupSevenStones = []
-// const cupEightStones = []
-// const cupNineStones = []
-// const cupTenStones = []
-// const cupElevenStones = []
-// const cupTwelveStones = []
 
 const firstCup = document.querySelector('#cup1')
 const secondCup = document.querySelector('#cup2') 
@@ -61,19 +47,18 @@ thirdCup.addEventListener('click', dropStoneThree)
 
 fourthCup.addEventListener('click', dropStoneFour)
 
-fifthCup.addEventListener('click', dropStoneFive)
+// fifthCup.addEventListener('click', dropStoneFive)
 
 
 /*----- functions -----*/
 //Function to take array and push to new array, respresenting "picking up" stones.
 function pickUp() {
     stonesInHand.push(cupOneStones.splice(0,4))
-    console.log(`You picked up ${stonesInHand.length} stones`)
+    console.log(stonesInHand.length)
     // cupOneStones.splice(0,4)
     // console.log('clicked!')
 }
 
-// console.log((cupOneStones.splice(0,4)).length)
 
 //Function to remove stones in circle upon click.
 function hideDivs() {
@@ -110,15 +95,12 @@ function showDiv() {
 }
 
 
-
-
 // cupOneStones.splice(0,4)
 // console.log(stonesInHand)
+
 // console.log(cupOneStones)
 // console.log(cups)
 // console.log(stones)
 // console.log(squareOne)
 // console.log(cupFour)
 // console.log(pickUp())
-
-
