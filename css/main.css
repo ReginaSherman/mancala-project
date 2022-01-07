@@ -1,21 +1,40 @@
-body {
-    background-image: url(https://wallpaperaccess.com/full/3461470.jpg);
-    background-color: aliceblue;
+
+.background-image {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 800px;
 }
 
-h1 {
+.player {
     text-align: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif    
-}
-
-h2 {
-    text-align: center;
+    font-size: 200px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: navy;
-    background-color: white;
-    width: 400px;
-    position: relative;
+    color: #ff0099c7;
+    width: 1000;
     margin: 0px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    z-index: 4;
+    -webkit-text-stroke: 5px #fffffff0;
+}
+
+.computer {
+    text-align: center;
+    font-size: 200px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #ff0099c7;
+    width: 1000;
+    margin: 0px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    z-index: 4;
+    -webkit-text-stroke: 5px #fffffff0;
 }
 
 h3 {
@@ -23,37 +42,72 @@ h3 {
 }
 
 .flex-container {
-    background-color: burlywood;
-    height: 300px;
-    width: 1000px;
+    background-color:white;
+    height: 350px;
+    width: 1050px;
+    border: solid #ff0099;
+    border-radius: 7%;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-
-    
-
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
 }
 
 .cup {
     height: 100px;
     width: 100px;
-    background-color:cornflowerblue;
-    border-style: solid;
+    background-color:#ff0099c7;
     border-radius: 35%;
     display: inline-flex;
     font-size: 50px;
-    color:black;
+    color:white;
     padding: 10px;
     margin: 2px;
 }
 
-
-.store{
-    height: 250px;
-    width: 100px;
+#p1 {
+    height: 275px;
+    width: 75px;
+    background-color: #ff0099c7;
+    border-radius: 5%;
     font-size: 50px;
-    color: black;
+    color: white;
+    position: absolute;
+    z-index: 3;
+    /* right: 6.75em; */
+    /* top: 6.6em; */
+    right: 2.75em;
+    top: 3.5em;
 }
+#cpu {
+    height: 275px;
+    width: 75px;
+    background-color: #ff0099c7;
+    border-radius: 5%;
+    font-size: 50px;
+    color: white;
+    position: absolute;
+    z-index: 3;
+    /* left: 6.75em; */
+    /* top: 6.6em; */
+    left: 2.75em;
+    top: 3.75em;
+}
+
+.player2 {
+    left:10px;
+    top:-10px;
+}
+
+.player1 {
+    right: 10px;
+    bottom: -10px
+}
+
 
 

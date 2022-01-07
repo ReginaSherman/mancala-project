@@ -40,7 +40,7 @@ Object.keys(scoring).forEach((id) => {
             const updatedCup = document.getElementById(id)
             updatedCup.innerHTML = scoring[id]
         }) 
-        
+        displayWinner();
     });
 })
 
@@ -105,9 +105,13 @@ function whoWon() {
     }
 }
 
-
-
-
+function displayWinner() {
+    if (isGameOver() === true && (scoring.p1 > scoring.cpu)) {
+        document.querySelector('#player').style.display = 'flex'
+    } else if (isGameOver() === true && (scoring.p1 < scoring.cpu)) {
+        document.querySelector('#computer').style.display = 'flex'
+    }
+}
 
 
 
