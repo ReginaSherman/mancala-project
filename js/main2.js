@@ -50,24 +50,34 @@ Object.keys(scoring).forEach((id) => {
 //Grab the first index's value
 //Typically this would be done with an event listener that grabs the index by what the user clicks, so each of these cups would have 
 //event listeners attached
+function runLoop(id) {
+    // get score from scoring object by id
+    let currentAmountOfStones = scoring[id]
+    console.log(currentAmountOfStones)
+    // reset clicked div to 0, as all stones have been "picked up"
+    scoring[id] = 0
 
+    //get an array of the keys of the object
+    const keys = Object.keys(scoring)
+    console.log(keys.keys(scoring))
 
-//THIS WOULD BE AT LEAST ONE PART OF A FUNCTION
-function runLoop(index) {
-    let currentAmountOfStones = cups[index]
-    cups[index] = 0
-    for(let i = index + 1; i <= index + currentAmountOfStones; i++) {
-        cups[i%14]++
+    //get the index of the current id in the keys array
+    const index = keys.indexOf(id)
+    console.log(keys.indexOf(id))
+    // loop through array and increment value of index
+    for (let i = index + 1; i <= index + currentAmountOfStones; i++) {
+        const key = keys[i % 14] // %14 to ensure loop will continue to loop infinitely around array
+        scoring[key]++;
     }
 }
 
-// function updateCount(div) {
-    //     for(let i = div; i <= allCups.length; i++) {
-        //     div.innerHTML = [i];
-//     }
-// }
-
-//  console.log(cups) //--> This completes a players round and reflects the current state of the board
+function isTopRowEmpty() {
+    if (scoring.seven === 0 && scoring.eight === 0 && scoring.nine === 0 && scoring.ten === 0 && scoring.eleven === 0 && scoring.twelve === 0) {
+        return true
+    } else {
+        return false
+    }
+}
 
 // If ((cups[index] === cups[1]) || (cups[index] === cups[2]) || (cups[index] === cups[3]) || (cups[index] === cups[4]) || (cups[index] === cups[5])) 
 // console.log("this works")
