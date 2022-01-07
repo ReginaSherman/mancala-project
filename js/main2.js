@@ -87,6 +87,24 @@ function isBottomRowEmpty() {
     }
 }
 
+function isGameOver() {
+    if (isTopRowEmpty() === true  || isBottomRowEmpty() === true) {
+    return true 
+    } else {
+        return false
+    }
+}
+
+function whoWon() {
+    if (scoring.p1 > scoring.cpu) {
+        return "You won!"
+    } else if (scoring.p1 < scoring.cpu) {
+        return "Computer wins"
+    } else if (scoring.p1 == scoring.cpu) {
+        return "Tie!"
+    }
+}
+
 
 
 
@@ -118,7 +136,7 @@ function isBottomRowEmpty() {
             // }
             // console.log(topRow.includes('#one'))
 
-            
+
 //CODE ORGANIZATION:
 //top - to - bottom generally this is the flow. 
 
