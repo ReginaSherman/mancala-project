@@ -5,66 +5,55 @@ body {
 
 h1 {
     text-align: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-    
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif    
 }
 
-.board {
+h2 {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: navy;
+    background-color: white;
+    width: 400px;
+    position: relative;
+    margin: 0px;
+}
+
+h3 {
+    position: absolute;
+}
+
+.flex-container {
     background-color: burlywood;
     height: 300px;
     width: 1000px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%) 
-   
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
 
     
+
 }
+
 .cup {
     height: 100px;
     width: 100px;
     background-color:cornflowerblue;
     border-style: solid;
     border-radius: 35%;
-    display:inline-flex;
-    position: relative;
-    margin: 7px; 
-    left: 125px;
-    top: 20px;
+    display: inline-flex;
     font-size: 50px;
     color:black;
+    padding: 10px;
+    margin: 2px;
 }
 
-.topRow { 
-    margin-top: 10px;
-}
 
-.bottomRow {
-    margin-top: 10px;
-
-}
-
-.store {
+.store{
     height: 250px;
     width: 100px;
-    background-color: cornflowerblue;
-    border-style: solid;
-    border-radius: 35%;
-    display:inline-flex;
-    position: relative;
-}
-
-#cpu {
-    position: absolute;
     font-size: 50px;
     color: black;
 }
 
-#p1 {
-    position: absolute;
-    right: 0px;
-    font-size: 50px;
-    color:black;
-}
+

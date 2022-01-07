@@ -10,24 +10,29 @@
 </head>
 <body>
     <h1>MANCALA</h1>
-    <div class="board">
-    <div class="store bottomRow" id="cpu" data-id=14 data-stones=0></div>
-    <div class="store topRow" id="p1" data-id=0 data-stones=0></div>
-    <div class="topRow">
-        <div class="cup topRow" id="twelve" data-id=12 data-stones=4></div>
-        <div class="cup topRow" id="eleven" data-id=11 data-stones=4></div>
-        <div class="cup topRow" id="ten" data-id=10 data-stones=4></div>
-        <div class="cup topRow" id="nine" data-id=9 data-stones=4></div>
-        <div class="cup topRow" id="eight" data-id=8 data-stones=4></div>
-        <div class="cup topRow" id="seven" data-id=7 data-stones=4></div>
+    <h2 id="player">YOU WIN!</h2>
+    <h2 id="computer">COMPUTER WINS</h2>
+    <h3>COMPUTER</h3>
+    <div class="flex-container">
+    <div class="cup store" id="cpu"></div>
+    <!-- <div class="topRow"> -->
+        <div class="cup topRow" id="twelve"></div>
+        <div class="cup topRow" id="eleven"></div>
+        <div class="cup topRow" id="ten"></div>
+        <div class="cup topRow" id="nine"></div>
+        <div class="cup topRow" id="eight"></div>
+        <div class="cup topRow" id="seven"></div>
+    <!-- </div> -->
+    <!-- <div class="bottomRow"> -->
+        <div class="cup bottomRow" id="one"></div>
+        <div class="cup bottomRow" id="two"></div>
+        <div class="cup bottomRow" id="three"></div>
+        <div class="cup bottomRow" id="four"></div>
+        <div class="cup bottomRow" id="five"></div>
+        <div class="cup bottomRow" id="six"></div>
+    <!-- </div> -->
+    <div class="cup store" id="p1"></div>
     </div>
-    <div class="bottomRow">
-        <div class="cup bottomRow" id="one" data-id=1 data-stones=4></div>
-        <div class="cup bottomRow" id="two" data-id=2 data-stones=4></div>
-        <div class="cup bottomRow" id="three" data-id=3 data-stones=4></div>
-        <div class="cup bottomRow" id="four" data-id=4 data-stones=4></div>
-        <div class="cup bottomRow" id="five" data-id=5 data-stones=4></div>
-        <div class="cup bottomRow" id="six" data-id=6 data-stones=4></div>
-    </div>
-    </div>
+    <h3>PLAYER</h3>
+</body>
 </html> 
