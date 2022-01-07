@@ -16,31 +16,33 @@ const scoring = {
 }
 //If I'm a player and I work with the first index/cup then that should be 0, and distribute to the indexes ahead of it
 
-//WHAT NEEDS TO BE TRACKED DURING EACH PLAY:
-const topRow = Array.from(document.querySelectorAll('.topRow'))
-// console.log(topRow)
-const bottomRow = document.body.querySelectorAll('.bottomRow')
-// console.log(bottomRow)
-const playerStore = document.body.querySelector('#p1')
-playerStore.innerHTML = cups[0]
-const computerStore = document.body.querySelectorAll('#cpu')
-computerStore.innerHTML = cups[13]
+// console.log(scoring.one)
+// map over each key in the score object
 
-const cupOne = document.getElementById('one')
-const cupTwo = document.getElementById('two')
-const cupThree = document.getElementById('three')
-const cupFour = document.getElementById('four')
-const cupFive = document.getElementById('five')
-const cupSix = document.getElementById('six')
-const cupSeven = document.getElementById('seven')
-const cupEight = document.getElementById('eight')
-const cupNine = document.getElementById('nine')
-const cupTen = document.getElementById('ten')
-const cupEleven = document.getElementById('eleven')
-const cupTwelve = document.getElementById('twelve')
+Object.keys(scoring).forEach((id) => {
+    // get the value for that id
+    const score = scoring[id]
 
-let allCups = [cupOne, cupTwo, cupThree, cupFour, cupFive, cupSix, playerStore, cupSeven, cupEight,
-cupNine, cupTen, cupEleven, cupTwelve, computerStore]
+    // get the html element for the id
+    const cup = document.getElementById(id)
+    // initialize the default
+    cup.innerHTML = score
+
+    // add a click event listener to the element
+    const location = document.body.querySelector(`#${id}`)
+    location.addEventListener('click', () => {
+        // run the loop for the given id on click
+        runLoop(id)
+        
+        
+        // update each cup to use the current scoring
+        Object.keys(scoring).forEach((id) => {
+            const updatedCup = document.getElementById(id)
+            updatedCup.innerHTML = scoring[id]
+        }) 
+        
+    });
+})
 
 // console.log(allCups)
 
