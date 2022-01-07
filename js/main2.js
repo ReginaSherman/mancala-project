@@ -44,24 +44,13 @@ Object.keys(scoring).forEach((id) => {
     });
 })
 
-// console.log(allCups)
-
-// if (parseInt(playerStore.innerHTML) > parseInt(computerStore.innerHTML)) {
-//     console.log("you won!")
-// }
-
-
-// let gameStart = document.body.querySelectorAll(".cup").innerHTML = cups;
-// console.log(gameStart)
-
 //If player picks up stones and needs to pass the computer's total cup, we would check if the current iteration is currently on the last index of the array
 //example: if the index cups[8 + 4] is the same index as the last item in the array, start back at cup[0] --> use .indexOf() to compare the index
 
 //Grab the first index's value
 //Typically this would be done with an event listener that grabs the index by what the user clicks, so each of these cups would have 
 //event listeners attached
-//But for speed and testing purposes, we can specify the cup we want to work with
-// currentAmountOfStones = cups[0]
+
 
 //THIS WOULD BE AT LEAST ONE PART OF A FUNCTION
 function runLoop(index) {
@@ -94,136 +83,6 @@ function runLoop(index) {
             // console.log(topRow.includes('#one'))
             
             
- //-----EVENT LISTENERS HERE AT THE BOTTOM-----
-//Grab the div
-
-// document.querySelectorAll('.cup').forEach(square => {
-//     square.addEventListener('click', () => {
-//         cupOne.innerHTML = cups[1]++
-//     })
-// })
-
-// for (let i = 0; i < cups.length; i++) {
-//     const iterator = cups.values();
-//     for (const value of iterator) {
-//         console.log(value);
-//     }
-// }
-
-
-// const sumArray = cups.map()
-
-// for (let i = 0; i < cups.length; i++){
-//     let sum = cups.values();
-//     console.log(sum)
-// // }
-
-let sum = 0
-document.querySelectorAll('.cup').forEach(square => {
-    square.addEventListener('click', () => { 
-       sum += parseInt(square.dataset.stones) 
-       console.log(sum)
-        for(let i = parseInt(square.dataset.id) - 1; i < allCups.length; i++) {
-            if(sum >= 0) {
-                square.innerHTML = 0
-                allCups[i%14].innerHTML = parseInt(allCups[i%14].innerHTML) + 1
-                allCups[i%14].dataset.stones = parseInt(allCups[i%14].innerHTML) + 1
-                sum -= 1
-            }
-        }
-        
-    })
-})
-
-const locationOfFirstDiv = document.body.querySelector('#one')
-cupOne.innerHTML = cups[1]
-// console.log(locationOfFirstDiv)
-locationOfFirstDiv.addEventListener('click', () => {
-    runLoop(1) // <--- this would work! :) 
-    // cupOne.innerHTML = cups[1]
-    console.log(cups)
-    //Here is where would run relevant functions
-    //or simply have our tasks within here.. depends on how large your logic becomes.
-})
-            
-const locationOfSecondDiv = document.body.querySelector('#two')
-cupTwo.innerHTML = cups[2]
-locationOfSecondDiv.addEventListener('click', () => {
-    runLoop(2)
-    // cupTwo.innerHTML = cups[2]
-    console.log(cups)
-})
-    
-const locationOfThirdDiv = document.body.querySelector('#three')
-cupThree.innerHTML = cups[3]
-locationOfThirdDiv.addEventListener('click', () => {
-    runLoop(3)
-    console.log(cups)
-})
-
-const locationOfFourthDiv = document.body.querySelector('#four')
-cupFour.innerHTML = cups[4]
-locationOfFourthDiv.addEventListener('click', () => {
-    runLoop(4)
-    console.log(cups)
-})
-
-const locationOfFifthDiv = document.body.querySelector('#five')
-cupFive.innerHTML = cups[5]
-locationOfFifthDiv.addEventListener('click', () => {
-    runLoop(5)
-    console.log(cups)
-})
-    
-const locationOfSixDiv = document.body.querySelector('#six')
-cupSix.innerHTML = cups[6]
-locationOfSixDiv.addEventListener('click', () => {
-    runLoop(6)
-    console.log(cups)  
-})
-
-const locationOfSeventhDiv = document.body.querySelector('#seven')
-cupSeven.innerHTML = cups[7]
-locationOfSeventhDiv.addEventListener('click', () => {
-    runLoop(7)
-    console.log(cups)
-})
-
-const locationOfEighthDiv = document.body.querySelector('#eight')
-cupEight.innerHTML = cups[8]
-locationOfEighthDiv.addEventListener('click', () => {
-    runLoop(8)
-    console.log(cups)
-})
-    
-const locationOfNinthDiv = document.body.querySelector('#nine')
-cupNine.innerHTML = cups[9]
-locationOfNinthDiv.addEventListener('click', () => {
-    runLoop(9)
-    console.log(cups)   
-})
-
-const locationOfTenthDiv = document.body.querySelector('#ten')
-cupTen.innerHTML = cups[9]
-locationOfTenthDiv.addEventListener('click', () => {
-    runLoop(10)
-    console.log(cups)
-})
-
-const locationOfEleventhDiv = document.body.querySelector('#eleven')
-cupEleven.innerHTML = cups[10]
-locationOfEleventhDiv.addEventListener('click', () => {
-    runLoop(11)
-    console.log(cups)    
-})
-
-const locationOfTwelfthDiv = document.body.querySelector('#twelve')
-cupTwelve.innerHTML = cups[11]
-locationOfTwelfthDiv.addEventListener('click', () => {
-    runLoop(12)
-    console.log(cups)
-})
-
 
 
 //^ We would follow this same syntax to setup the event listener for all the other divs
