@@ -14,62 +14,60 @@ const scoring = {
     twelve: 4,
     cpu: 0,
 }
-//If I'm a player and I work with the first index/cup then that should be 0, and distribute to the indexes ahead of it
 
-// console.log(scoring.one)
 // map over each key in the score object
-
 Object.keys(scoring).forEach((id) => {
     // get the value for that id
     const score = scoring[id]
-
+    
     // get the html element for the id
     const cup = document.getElementById(id)
     // initialize the default
     cup.innerHTML = score
-
+    
     // add a click event listener to the element
     const location = document.body.querySelector(`#${id}`)
     location.addEventListener('click', () => {
         // run the loop for the given id on click
         runLoop(id)
-        
-        
         // update each cup to use the current scoring
         Object.keys(scoring).forEach((id) => {
             const updatedCup = document.getElementById(id)
             updatedCup.innerHTML = scoring[id]
         }) 
-        displayWinner();
-    });
+        location.addEventListener('click', runLoop(getComputerChoice()))
+    })
+    displayWinner()
 })
 
-//If player picks up stones and needs to pass the computer's total cup, we would check if the current iteration is currently on the last index of the array
-//example: if the index cups[8 + 4] is the same index as the last item in the array, start back at cup[0] --> use .indexOf() to compare the index
+//get an array of the keys of the object
+const keys = Object.keys(scoring)
 
-//Grab the first index's value
-//Typically this would be done with an event listener that grabs the index by what the user clicks, so each of these cups would have 
-//event listeners attached
+
 function runLoop(id) {
     // get score from scoring object by id
     let currentAmountOfStones = scoring[id]
-    console.log(currentAmountOfStones)
+    
     // reset clicked div to 0, as all stones have been "picked up"
     scoring[id] = 0
-
-    //get an array of the keys of the object
-    const keys = Object.keys(scoring)
-    console.log(keys.keys(scoring))
-
     //get the index of the current id in the keys array
     const index = keys.indexOf(id)
-    console.log(keys.indexOf(id))
+   
     // loop through array and increment value of index
     for (let i = index + 1; i <= index + currentAmountOfStones; i++) {
         const key = keys[i % 14] // %14 to ensure loop will continue to loop infinitely around array
         scoring[key]++;
     }
 }
+
+
+
+function getComputerChoice () {
+    const randomNumber = (Math.floor(Math.random() * 6))
+    return keys[randomNumber]
+}
+// getComputerChoice();
+
 
 function isTopRowEmpty() {
     if (scoring.seven === 0 && scoring.eight === 0 && scoring.nine === 0 && scoring.ten === 0 && scoring.eleven === 0 && scoring.twelve === 0) {
@@ -113,9 +111,10 @@ function displayWinner() {
     }
 }
 
+function hideInstructions() {
+    document.querySelector('.h1').style.display = 'none'
+}
 
-
-//^ We would follow this same syntax to setup the event listener for all the other divs
 
 //BUG: THIS WOULD CAUSE YOUR FUNCTION TO RUN WITHOUT WAITING FOR A USER TO CLICK
 //locationOfFirstDiv.addEventListener("click", runLoop()) <-- this will not listen for an event but run immediately: wrong syntax

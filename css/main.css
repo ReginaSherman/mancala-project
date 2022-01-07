@@ -5,11 +5,27 @@
     height: 800px;
 }
 
+h1 {
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: brown;
+    width: 1000;
+    margin: 0px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+    -webkit-text-stroke: 2px #fffffff0;
+}
+
 .player {
     text-align: center;
     font-size: 200px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #ff0099c7;
+    color: brown;
     width: 1000;
     margin: 0px;
     position: relative;
@@ -25,7 +41,7 @@
     text-align: center;
     font-size: 200px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #ff0099c7;
+    color: brown;
     width: 1000;
     margin: 0px;
     position: relative;
@@ -42,10 +58,10 @@ h3 {
 }
 
 .flex-container {
-    background-color:white;
+    background-color:burlywood;
     height: 350px;
     width: 1050px;
-    border: solid #ff0099;
+    border: solid brown;
     border-radius: 7%;
     display: flex;
     flex-flow: row wrap;
@@ -61,11 +77,12 @@ h3 {
 .cup {
     height: 100px;
     width: 100px;
-    background-color:#ff0099c7;
+    background-color:tan;
+    border: solid brown;
     border-radius: 35%;
     display: inline-flex;
     font-size: 50px;
-    color:white;
+    color: brown;
     padding: 10px;
     margin: 2px;
 }
@@ -73,10 +90,11 @@ h3 {
 #p1 {
     height: 275px;
     width: 75px;
-    background-color: #ff0099c7;
+    background-color: tan;
+    border: solid brown;
     border-radius: 5%;
     font-size: 50px;
-    color: white;
+    color:brown;
     position: absolute;
     z-index: 3;
     /* right: 6.75em; */
@@ -87,10 +105,11 @@ h3 {
 #cpu {
     height: 275px;
     width: 75px;
-    background-color: #ff0099c7;
+    background-color: tan;
+    border: solid brown;
     border-radius: 5%;
     font-size: 50px;
-    color: white;
+    color:brown;
     position: absolute;
     z-index: 3;
     /* left: 6.75em; */
@@ -102,11 +121,14 @@ h3 {
 .player2 {
     left:10px;
     top:-10px;
+    color: brown;
 }
 
 .player1 {
     right: 10px;
-    bottom: -10px
+    bottom: -10px;
+    color: brown;
+
 }
 
 
