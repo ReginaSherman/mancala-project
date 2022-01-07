@@ -79,20 +79,18 @@ function isTopRowEmpty() {
     }
 }
 
-// If ((cups[index] === cups[1]) || (cups[index] === cups[2]) || (cups[index] === cups[3]) || (cups[index] === cups[4]) || (cups[index] === cups[5])) 
-// console.log("this works")
+function isBottomRowEmpty() {
+    if (scoring.one === 0 && scoring.two === 0 && scoring.three === 0 && scoring.four === 0 && scoring.five === 0 && scoring.six === 0) {
+        return true 
+    } else {
+        return false
+    }
+}
 
-// If ((topRow.includes(the div that I click) {
-    //allow click and run eventListner
-    // } else {
-        //do not allow click and show alert "choose from the other row"
-        // })
-        
-        // if (topRow.includes('#one') === true) {
-            // }
-            // console.log(topRow.includes('#one'))
-            
-            
+
+
+
+
 
 
 //^ We would follow this same syntax to setup the event listener for all the other divs
@@ -107,7 +105,20 @@ function isTopRowEmpty() {
 //Example: Let's say we are the player and our side is the bottom side we need check which cups are valid:
 //If statement: "If ((what the user selected with the event listener is === cup[1]) || (what the user selected === cup [2]) || (etc..)"
 
+// If ((cups[index] === cups[1]) || (cups[index] === cups[2]) || (cups[index] === cups[3]) || (cups[index] === cups[4]) || (cups[index] === cups[5])) 
+// console.log("this works")
 
+// If ((topRow.includes(the div that I click) {
+    //allow click and run eventListner
+    // } else {
+        //do not allow click and show alert "choose from the other row"
+        // })
+        
+        // if (topRow.includes('#one') === true) {
+            // }
+            // console.log(topRow.includes('#one'))
+
+            
 //CODE ORGANIZATION:
 //top - to - bottom generally this is the flow. 
 
