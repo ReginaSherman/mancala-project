@@ -1,4 +1,19 @@
-let cups = [0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0]
+const scoring = {
+    one: 4,
+    two: 4,
+    three: 4,
+    four: 4,
+    five: 4,
+    six: 4,
+    p1: 0,
+    seven: 4,
+    eight: 4,
+    nine: 4,
+    ten: 4,
+    eleven: 4,
+    twelve: 4,
+    cpu: 0,
+}
 //If I'm a player and I work with the first index/cup then that should be 0, and distribute to the indexes ahead of it
 
 //WHAT NEEDS TO BE TRACKED DURING EACH PLAY:
