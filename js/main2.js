@@ -9,7 +9,7 @@ const bottomRow = document.body.querySelectorAll('.bottomRow')
 const playerStore = document.body.querySelector('#p1')
 playerStore.innerHTML = cups[0]
 const computerStore = document.body.querySelectorAll('#cpu')
-computerStore.innerHTML = cups[14]
+computerStore.innerHTML = cups[13]
 
 const cupOne = document.getElementById('one')
 const cupTwo = document.getElementById('two')
@@ -29,10 +29,9 @@ cupNine, cupTen, cupEleven, cupTwelve, computerStore]
 
 // console.log(allCups)
 
-if (parseInt(playerStore.innerHTML) > parseInt(computerStore.innerHTML)) {
-    console.log("you won!")
-}
-    
+// if (parseInt(playerStore.innerHTML) > parseInt(computerStore.innerHTML)) {
+//     console.log("you won!")
+// }
 
 
 // let gameStart = document.body.querySelectorAll(".cup").innerHTML = cups;
@@ -57,8 +56,8 @@ function runLoop(index) {
 }
 
 // function updateCount(div) {
-//     for(let i = div; i <= allCups.length; i++) {
-//     div.innerHTML = [i];
+    //     for(let i = div; i <= allCups.length; i++) {
+        //     div.innerHTML = [i];
 //     }
 // }
 
@@ -87,25 +86,37 @@ function runLoop(index) {
 //     })
 // })
 
-// for(let i = div; i <= allCups.length; i++)
-// div.innerHTML = cups[i]
+// for (let i = 0; i < cups.length; i++) {
+//     const iterator = cups.values();
+//     for (const value of iterator) {
+//         console.log(value);
+//     }
+// }
+
+
+// const sumArray = cups.map()
+
+// for (let i = 0; i < cups.length; i++){
+//     let sum = cups.values();
+//     console.log(sum)
+// // }
+
 let sum = 0
 document.querySelectorAll('.cup').forEach(square => {
     square.addEventListener('click', () => { 
-       sum += parseInt(square.dataset.stones)
-        console.log(sum)
-        for(let i = parseInt(square.dataset.id); i < cups.length; i++) {
+       sum += parseInt(square.dataset.stones) 
+       console.log(sum)
+        for(let i = parseInt(square.dataset.id) - 1; i < allCups.length; i++) {
             if(sum >= 0) {
                 square.innerHTML = 0
-                allCups[i].innerHTML = parseInt(allCups[i].innerHTML) + 1
+                allCups[i%14].innerHTML = parseInt(allCups[i%14].innerHTML) + 1
+                allCups[i%14].dataset.stones = parseInt(allCups[i%14].innerHTML) + 1
                 sum -= 1
             }
         }
-
+        
     })
 })
-
-
 
 const locationOfFirstDiv = document.body.querySelector('#one')
 cupOne.innerHTML = cups[1]
@@ -176,21 +187,21 @@ locationOfNinthDiv.addEventListener('click', () => {
 })
 
 const locationOfTenthDiv = document.body.querySelector('#ten')
-cupTen.innerHTML = cups[10]
+cupTen.innerHTML = cups[9]
 locationOfTenthDiv.addEventListener('click', () => {
     runLoop(10)
     console.log(cups)
 })
 
 const locationOfEleventhDiv = document.body.querySelector('#eleven')
-cupEleven.innerHTML = cups[11]
+cupEleven.innerHTML = cups[10]
 locationOfEleventhDiv.addEventListener('click', () => {
     runLoop(11)
     console.log(cups)    
 })
 
 const locationOfTwelfthDiv = document.body.querySelector('#twelve')
-cupTwelve.innerHTML = cups[12]
+cupTwelve.innerHTML = cups[11]
 locationOfTwelfthDiv.addEventListener('click', () => {
     runLoop(12)
     console.log(cups)

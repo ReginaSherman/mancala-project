@@ -1,4 +1,5 @@
 body {
+    background-image: url(https://wallpaperaccess.com/full/3461470.jpg);
     background-color: aliceblue;
 }
 
@@ -8,7 +9,19 @@ h1 {
     
 }
 
+.board {
+    background-color: burlywood;
+    height: 300px;
+    width: 1000px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+   
 
+    
+}
 .cup {
     height: 100px;
     width: 100px;
@@ -18,20 +31,18 @@ h1 {
     display:inline-flex;
     position: relative;
     margin: 7px; 
-    left: 250px;
+    left: 125px;
+    top: 20px;
     font-size: 50px;
     color:black;
 }
 
-.topRow {
-    margin-top: 20px;
-    
+.topRow { 
+    margin-top: 10px;
 }
-
 
 .bottomRow {
     margin-top: 10px;
-    align-content: center;
 
 }
 
@@ -47,14 +58,13 @@ h1 {
 
 #cpu {
     position: absolute;
-    left: 100px;
     font-size: 50px;
     color: black;
 }
 
 #p1 {
     position: absolute;
-    right: 110px;
+    right: 0px;
     font-size: 50px;
     color:black;
 }
