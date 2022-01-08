@@ -16,44 +16,65 @@ const numberOfStones = {
 }
 
 const cupNumber = Object.keys(numberOfStones) //get an array of the cupNumber of the object
-
+//let myTurn = true;
 const myCups = [cupNumber[0], cupNumber[1], cupNumber[2], cupNumber[3], cupNumber[4], cupNumber[5]]
-// let myTurn = true;
 
-// map over each key in the stones object
+console.log(numberOfStones)
+
+//map over each key in the score object
+// for (let i = 0; i < 6; i++)
 Object.keys(numberOfStones).forEach((id) => {
-    const score = numberOfStones[id] // get the value for that id
-    const cup = document.getElementById(id) // get the html element for the id
-    cup.innerHTML = score // initialize the default
-    const location = document.body.querySelector(`#${id}`)  // add a click event listener to the element
+    const score = numberOfStones[id] //get the value for that id
+    const cup = document.getElementById(id) //get the html element for the id
+    cup.innerHTML = score //initialize the default
+})
+
+myCups.forEach((cup) => {
+    const location = document.body.querySelector(`#${cup}`)  //add a click event listener to the element
     location.addEventListener('click', () => {
-        runLoop(id)// run the loop for the given id on click
-        Object.keys(numberOfStones).forEach((id) => {
-            const updatedCup = document.getElementById(id)
-            updatedCup.innerHTML = numberOfStones[id]
-        }) // update each cup to use the current numberOfStones
-        // myTurn=false;
-        // location.addEventListener('click', runLoop(getComputerChoice()))
+        runLoop(cup) //run the loop for the given id on click
+        
+        Object.keys(numberOfStones).forEach((cup) => {
+            const updatedCup = document.getElementById(cup)
+            updatedCup.innerHTML = numberOfStones[cup]
+        }) //update each cup to use the current numberOfStones
+
+        displayWinner()
+        
+        runLoop(getComputerChoice())
+
+        Object.keys(numberOfStones).forEach((cup) => {
+            const updatedCup = document.getElementById(cup)
+            updatedCup.innerHTML = numberOfStones[cup]
+        })
+
         displayWinner()
     })
 })
 
-runLoop= (id) => {
+runLoop = (id) => {
     let currentAmountOfStones = numberOfStones[id] // get score from numberOfStones object by id
     numberOfStones[id] = 0 // reset clicked div to 0, as all stones have been "picked up"
     const index = cupNumber.indexOf(id) //get the index of the current id in the cupNumber array
-    for (let i = index + 1; i <= index + currentAmountOfStones; i++) {
+    for (let i = index + 1; i <= index + currentAmountOfStones; i++) { // loop through array and increment value of index
         const key = cupNumber[i % 14] // %14 to ensure loop will continue to loop infinitely around array
         numberOfStones[key]++;
-    } // loop through array and increment value of index
+    } 
+    } 
 
 getComputerChoice = () => {
-    const randomNumber = (Math.floor(Math.random() * 6))
+    let randomNumber = (Math.floor(Math.random() * 6)) + 6 
+    while (randomNumber === 6) {
+        randomNumber = (Math.floor(Math.random() * 6)) + 6 
+    }
     return cupNumber[randomNumber]
 }
+console.log(getComputerChoice())
 
 isTopRowEmpty = () => {
-    if (numberOfStones.seven === 0 && numberOfStones.eight === 0 && numberOfStones.nine === 0 && numberOfStones.ten === 0 && numberOfStones.eleven === 0 && numberOfStones.twelve === 0) {
+    if (numberOfStones.seven === 0 && numberOfStones.eight === 0 && 
+        numberOfStones.nine === 0 && numberOfStones.ten === 0 && 
+        numberOfStones.eleven === 0 && numberOfStones.twelve === 0) {
         return true
     } else {
         return false
@@ -61,7 +82,9 @@ isTopRowEmpty = () => {
 }
 
 isBottomRowEmpty = () => {
-    if (numberOfStones.one === 0 && numberOfStones.two === 0 && numberOfStones.three === 0 && numberOfStones.four === 0 && numberOfStones.five === 0 && numberOfStones.six === 0) {
+    if (numberOfStones.one === 0 && numberOfStones.two === 0 && 
+        numberOfStones.three === 0 && numberOfStones.four === 0 && 
+        numberOfStones.five === 0 && numberOfStones.six === 0) {
         return true 
     } else {
         return false
@@ -70,7 +93,7 @@ isBottomRowEmpty = () => {
 
 isGameOver = () => {
     if (isTopRowEmpty() === true  || isBottomRowEmpty() === true) {
-        return true 
+    return true 
     } else {
         return false
     }
@@ -109,9 +132,6 @@ hideInstructions = () => {
 //Example: Let's say we are the player and our side is the bottom side we need check which cups are valid:
 //If statement: "If ((what the user selected with the event listener is === cup[1]) || (what the user selected === cup [2]) || (etc..)"
 
-// If ((cups[index] === cups[1]) || (cups[index] === cups[2]) || (cups[index] === cups[3]) || (cups[index] === cups[4]) || (cups[index] === cups[5])) 
-// console.log("this works")
-
 // If ((topRow.includes(the div that I click) {
     //allow click and run eventListner
     // } else {
@@ -129,11 +149,6 @@ hideInstructions = () => {
 //Having a notion constants: values need to be tracked throughout the game, we will initialized/declared at the top of our file
 //All our functions and the meat and potatoes of our logic is the middle
 //By convention, event listeners are kept at the very bottom of the JS file in the global scope.
-
-//Querying a tag that exists more than once:
-//const locationOfFirstDiv = document.body.getElementByTagName("div")[0]
-
-
 
 
 //NEXT STEPS: <-- Overall goal: This will involve setting up event listeners, dom manipulation, and updating the integer value for each div as the loop iterates
