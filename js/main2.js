@@ -1,4 +1,4 @@
-const scoring = {
+const numberOfStones = {
     one: 4,
     two: 4,
     three: 4,
@@ -15,103 +15,86 @@ const scoring = {
     cpu: 0,
 }
 
-// map over each key in the score object
-Object.keys(scoring).forEach((id) => {
-    // get the value for that id
-    const score = scoring[id]
-    
-    // get the html element for the id
-    const cup = document.getElementById(id)
-    // initialize the default
-    cup.innerHTML = score
-    
-    // add a click event listener to the element
-    const location = document.body.querySelector(`#${id}`)
+const cupNumber = Object.keys(numberOfStones) //get an array of the cupNumber of the object
+
+const myCups = [cupNumber[0], cupNumber[1], cupNumber[2], cupNumber[3], cupNumber[4], cupNumber[5]]
+// let myTurn = true;
+
+// map over each key in the stones object
+Object.keys(numberOfStones).forEach((id) => {
+    const score = numberOfStones[id] // get the value for that id
+    const cup = document.getElementById(id) // get the html element for the id
+    cup.innerHTML = score // initialize the default
+    const location = document.body.querySelector(`#${id}`)  // add a click event listener to the element
     location.addEventListener('click', () => {
-        // run the loop for the given id on click
-        runLoop(id)
-        // update each cup to use the current scoring
-        Object.keys(scoring).forEach((id) => {
+        runLoop(id)// run the loop for the given id on click
+        Object.keys(numberOfStones).forEach((id) => {
             const updatedCup = document.getElementById(id)
-            updatedCup.innerHTML = scoring[id]
-        }) 
-        location.addEventListener('click', runLoop(getComputerChoice()))
+            updatedCup.innerHTML = numberOfStones[id]
+        }) // update each cup to use the current numberOfStones
+        // myTurn=false;
+        // location.addEventListener('click', runLoop(getComputerChoice()))
+        displayWinner()
     })
-    displayWinner()
 })
 
-//get an array of the keys of the object
-const keys = Object.keys(scoring)
-
-
-function runLoop(id) {
-    // get score from scoring object by id
-    let currentAmountOfStones = scoring[id]
-    
-    // reset clicked div to 0, as all stones have been "picked up"
-    scoring[id] = 0
-    //get the index of the current id in the keys array
-    const index = keys.indexOf(id)
-   
-    // loop through array and increment value of index
+runLoop= (id) => {
+    let currentAmountOfStones = numberOfStones[id] // get score from numberOfStones object by id
+    numberOfStones[id] = 0 // reset clicked div to 0, as all stones have been "picked up"
+    const index = cupNumber.indexOf(id) //get the index of the current id in the cupNumber array
     for (let i = index + 1; i <= index + currentAmountOfStones; i++) {
-        const key = keys[i % 14] // %14 to ensure loop will continue to loop infinitely around array
-        scoring[key]++;
-    }
-}
+        const key = cupNumber[i % 14] // %14 to ensure loop will continue to loop infinitely around array
+        numberOfStones[key]++;
+    } // loop through array and increment value of index
 
-
-
-function getComputerChoice () {
+getComputerChoice = () => {
     const randomNumber = (Math.floor(Math.random() * 6))
-    return keys[randomNumber]
+    return cupNumber[randomNumber]
 }
-// getComputerChoice();
 
-
-function isTopRowEmpty() {
-    if (scoring.seven === 0 && scoring.eight === 0 && scoring.nine === 0 && scoring.ten === 0 && scoring.eleven === 0 && scoring.twelve === 0) {
+isTopRowEmpty = () => {
+    if (numberOfStones.seven === 0 && numberOfStones.eight === 0 && numberOfStones.nine === 0 && numberOfStones.ten === 0 && numberOfStones.eleven === 0 && numberOfStones.twelve === 0) {
         return true
     } else {
         return false
     }
 }
 
-function isBottomRowEmpty() {
-    if (scoring.one === 0 && scoring.two === 0 && scoring.three === 0 && scoring.four === 0 && scoring.five === 0 && scoring.six === 0) {
+isBottomRowEmpty = () => {
+    if (numberOfStones.one === 0 && numberOfStones.two === 0 && numberOfStones.three === 0 && numberOfStones.four === 0 && numberOfStones.five === 0 && numberOfStones.six === 0) {
         return true 
     } else {
         return false
     }
 }
 
-function isGameOver() {
+isGameOver = () => {
     if (isTopRowEmpty() === true  || isBottomRowEmpty() === true) {
-    return true 
+        return true 
     } else {
         return false
     }
 }
 
-function whoWon() {
-    if (scoring.p1 > scoring.cpu) {
+whoWon = () => {
+    if (numberOfStones.p1 > numberOfStones.cpu) {
         return "You won!"
-    } else if (scoring.p1 < scoring.cpu) {
+    } else if (numberOfStones.p1 < numberOfStones.cpu) {
         return "Computer wins"
-    } else if (scoring.p1 == scoring.cpu) {
+    } else if (numberOfStones.p1 == numberOfStones.cpu) {
         return "Tie!"
     }
 }
 
-function displayWinner() {
-    if (isGameOver() === true && (scoring.p1 > scoring.cpu)) {
+displayWinner = () => {
+    if (isGameOver() === true && (numberOfStones.p1 > numberOfStones.cpu)) {
         document.querySelector('#player').style.display = 'flex'
-    } else if (isGameOver() === true && (scoring.p1 < scoring.cpu)) {
+    } else if (isGameOver() === true && (numberOfStones.p1 < numberOfStones.cpu)) {
         document.querySelector('#computer').style.display = 'flex'
     }
 }
 
-function hideInstructions() {
+hideInstructions = () => {
     document.querySelector('.h1').style.display = 'none'
 }
 
