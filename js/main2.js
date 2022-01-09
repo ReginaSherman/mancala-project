@@ -16,13 +16,10 @@ const numberOfStones = {
 }
 
 const cupNumber = Object.keys(numberOfStones) //get an array of the cupNumber of the object
-//let myTurn = true;
-const myCups = [cupNumber[0], cupNumber[1], cupNumber[2], cupNumber[3], cupNumber[4], cupNumber[5]]
-
-console.log(numberOfStones)
-
+const myCups = [cupNumber[0], cupNumber[1], cupNumber[2], cupNumber[3], cupNumber[4], cupNumber[5]] // assigns only these cups to player
+const computerCups = [cupNumber[12], cupNumber[11], cupNumber[10], cupNumber[9], cupNumber[8], cupNumber[7]]
+let previousChoice = 'seven'
 //map over each key in the score object
-// for (let i = 0; i < 6; i++)
 Object.keys(numberOfStones).forEach((id) => {
     const score = numberOfStones[id] //get the value for that id
     const cup = document.getElementById(id) //get the html element for the id
@@ -32,27 +29,34 @@ Object.keys(numberOfStones).forEach((id) => {
 myCups.forEach((cup) => {
     const location = document.body.querySelector(`#${cup}`)  //add a click event listener to the element
     location.addEventListener('click', () => {
-        runLoop(cup) //run the loop for the given id on click
+        runLoop(cup, true) //run the loop for the given id on click
+        hideInstructions()
         
         Object.keys(numberOfStones).forEach((cup) => {
             const updatedCup = document.getElementById(cup)
             updatedCup.innerHTML = numberOfStones[cup]
         }) //update each cup to use the current numberOfStones
-
-        displayWinner()
         
-        runLoop(getComputerChoice())
+        displayWinner()
+        computerChoice = getComputerChoice()
+        console.log('computer choice: ', computerChoice)
+        runLoop(computerChoice, false)
+        // setTimeout(() => runLoop(getComputerChoice()), 2000)
+        resetSquareColor(previousChoice)
+        changeSquareColor(computerChoice)
+        previousChoice = computerChoice
 
         Object.keys(numberOfStones).forEach((cup) => {
             const updatedCup = document.getElementById(cup)
             updatedCup.innerHTML = numberOfStones[cup]
         })
-
+        
         displayWinner()
+        
     })
 })
 
-runLoop = (id) => {
+runLoop = (id, isMyTurn) => {
     let currentAmountOfStones = numberOfStones[id] // get score from numberOfStones object by id
     numberOfStones[id] = 0 // reset clicked div to 0, as all stones have been "picked up"
     const index = cupNumber.indexOf(id) //get the index of the current id in the cupNumber array
@@ -60,16 +64,45 @@ runLoop = (id) => {
         const key = cupNumber[i % 14] // %14 to ensure loop will continue to loop infinitely around array
         numberOfStones[key]++;
     } 
-    } 
+    const lastIndex = (index + currentAmountOfStones) % 14
+
+    if (isMyTurn && myCups.includes(cupNumber[lastIndex]) && numberOfStones[cupNumber[lastIndex]] === 1) {
+        const stonesToAdd = numberOfStones[cupNumber[12 - lastIndex]]
+        numberOfStones[cupNumber[6]] += stonesToAdd + 1// add stones in corresponding index + own cup to store index
+        numberOfStones[cupNumber[12 - lastIndex]] = 0 // empty corresponding index
+        numberOfStones[cupNumber[lastIndex]] = 0 // empty own cup index
+        
+    } else if (!isMyTurn && computerCups.includes(cupNumber[index + currentAmountOfStones]) && numberOfStones[cupNumber[index + currentAmountOfStones]] === 1) {
+        const stonesToAdd = numberOfStones[cupNumber[12 - lastIndex]]
+        numberOfStones[cupNumber[13]] += stonesToAdd + 1// add stones in corresponding index + own cup to store index
+        numberOfStones[cupNumber[12 - lastIndex]] = 0 // empty corresponding index
+        numberOfStones[cupNumber[lastIndex]] = 0
+    }
+}
 
 getComputerChoice = () => {
-    let randomNumber = (Math.floor(Math.random() * 6)) + 6 
-    while (randomNumber === 6) {
-        randomNumber = (Math.floor(Math.random() * 6)) + 6 
-    }
-    return cupNumber[randomNumber]
+    let availableCups = []
+    computerCups.forEach((cup) => {
+        if (numberOfStones[cup] != 0) {
+            availableCups.push(cup)
+        }
+    })
+    const randomNumber = (Math.floor(Math.random() * availableCups.length))
+    const choice = availableCups[randomNumber]
+    return choice
 }
-console.log(getComputerChoice())
+
+changeSquareColor = (cup) => {
+    const location = document.body.querySelector(`#${cup}`) 
+    location.style.border = 'solid red'
+    location.style.color = 'red'
+}
+
+resetSquareColor = (cup) => {
+    const location = document.body.querySelector(`#${cup}`)
+    location.style.border = 'solid brown'
+    location.style.color = 'brown'
+}
 
 isTopRowEmpty = () => {
     if (numberOfStones.seven === 0 && numberOfStones.eight === 0 && 
@@ -118,8 +151,9 @@ displayWinner = () => {
 }
 
 hideInstructions = () => {
-    document.querySelector('.h1').style.display = 'none'
+    document.querySelector('#h1').style.display = 'none'
 }
+
 
 
 //BUG: THIS WOULD CAUSE YOUR FUNCTION TO RUN WITHOUT WAITING FOR A USER TO CLICK
